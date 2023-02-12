@@ -56,8 +56,7 @@
 		6BA435F22998A80D00EE2E8A /* YallaCalculatorApp */ = {
 			isa = PBXGroup;
 			children = (
-				6BA435F32998A80D00EE2E8A /* AppDelegate.swift */,
-				6BA435F52998A80D00EE2E8A /* SceneDelegate.swift */,
+				6BA436072998A9CF00EE2E8A /* SupportingFilesSV */,
 				6BA435F72998A80D00EE2E8A /* ViewController.swift */,
 				6BA435F92998A80D00EE2E8A /* Main.storyboard */,
 				6BA435FC2998A80E00EE2E8A /* Assets.xcassets */,
@@ -65,6 +64,15 @@
 				6BA436012998A80E00EE2E8A /* Info.plist */,
 			);
 			path = YallaCalculatorApp;
+			sourceTree = "<group>";
+		};
+		6BA436072998A9CF00EE2E8A /* SupportingFilesSV */ = {
+			isa = PBXGroup;
+			children = (
+				6BA435F32998A80D00EE2E8A /* AppDelegate.swift */,
+				6BA435F52998A80D00EE2E8A /* SceneDelegate.swift */,
+			);
+			path = SupportingFilesSV;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
