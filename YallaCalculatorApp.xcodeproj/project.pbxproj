@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B07AA2229999A7000503A7C /* MathExpression in Frameworks */ = {isa = PBXBuildFile; productRef = 6B07AA2129999A7000503A7C /* MathExpression */; };
 		6BA435F42998A80D00EE2E8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA435F32998A80D00EE2E8A /* AppDelegate.swift */; };
 		6BA435F62998A80D00EE2E8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA435F52998A80D00EE2E8A /* SceneDelegate.swift */; };
 		6BA435F82998A80D00EE2E8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA435F72998A80D00EE2E8A /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B07AA2229999A7000503A7C /* MathExpression in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +93,9 @@
 			dependencies = (
 			);
 			name = YallaCalculatorApp;
+			packageProductDependencies = (
+				6B07AA2129999A7000503A7C /* MathExpression */,
+			);
 			productName = YallaCalculatorApp;
 			productReference = 6BA435F02998A80D00EE2E8A /* YallaCalculatorApp.app */;
 			productType = "com.apple.product-type.application";
@@ -119,6 +124,9 @@
 				Base,
 			);
 			mainGroup = 6BA435E72998A80D00EE2E8A;
+			packageReferences = (
+				6B07AA2029999A7000503A7C /* XCRemoteSwiftPackageReference "MathExpression" */,
+			);
 			productRefGroup = 6BA435F12998A80D00EE2E8A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -364,6 +372,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6B07AA2029999A7000503A7C /* XCRemoteSwiftPackageReference "MathExpression" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/peredaniel/MathExpression";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6B07AA2129999A7000503A7C /* MathExpression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B07AA2029999A7000503A7C /* XCRemoteSwiftPackageReference "MathExpression" */;
+			productName = MathExpression;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6BA435E82998A80D00EE2E8A /* Project object */;
 }
