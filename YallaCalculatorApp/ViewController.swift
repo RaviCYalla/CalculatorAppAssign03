@@ -11,29 +11,33 @@ import MathExpression
 class ViewController: UIViewController {
 
     @IBOutlet weak var mathExpressionLBL: UILabel!
-    
-    
-    var currentexpression = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         mathExpressionLBL.text = ""
-        mathExpressionLBL.numberOfLines = 0
+       mathExpressionLBL.numberOfLines = 0
+     //   var currentexpression = ""
         
     }
+  //  mathExpressionLBL.text = ""
+  //   mathExpressionLBL.numberOfLines = 0
+     var currentexpression = ""
+    
 
     @IBAction func tappedChar(_ sender: UIButton) {
-        guard let character = sender.titleLabel?.text else {
-            return}
-            currentexpression += character
-            mathExpressionLBL.text = currentexpression
+        
+//        guard let character = sender.titleLabel?.text else {
+//            return}
+//            currentexpression += character
+//            mathExpressionLBL.text = currentexpression
+        
+
+        
+        guard let buttonTitle = sender.titleLabel, let buttonText = buttonTitle.text else{
+            return
         }
-        
-        
-//        guard let buttonTitle = sender.titleLabel, let buttonText = buttonTitle.text else{
-//            return
-//        }
 //        guard let expression = self.mathExpressionLBL.text else {
 //            return
 //        }
@@ -42,28 +46,68 @@ class ViewController: UIViewController {
 //        {
 //            mathExpressionLBL.text! += char
 //        }
-        
-       // mathExpressionLBL.text! += sender.titleLabel!.text!
-        
-      //  expression += sender.titleLabel!.text!
-      //  mathExpressionLBL.text = expression
+//
+//        mathExpressionLBL.text! += sender.titleLabel!.text!
+//
+//        expression += sender.titleLabel!.text!
+//        mathExpressionLBL.text = expression
         
         
     
     
 //    if buttonText == "="{
+//       // let value = self.evaluate(exp: "\(expression + "0")")
 //        let value = self.evaluate(exp: expression + "+0")
-//       // let value = self.eva(exp: expression + "+0")
-//        self.mathExpressionLBL.text = self.isI
+//        self.mathExpressionLBL.text = self.isInteger(value: value) ? "\(Int(value))" : "\(value)"
+//        return
 //    }
         
+        if buttonText == "-" || buttonText == "+"{
+            let value = self.evaluate(exp: self.mathExpressionLBL.text!)
+           // let value = self.eva(exp: expression + "+0")
+            self.mathExpressionLBL.text = self.isInteger(value: value) ? "\(Int(value))" : "\(value)"
+            self.mathExpressionLBL.text! += buttonText == "-" ? "-" : "+"
+    }
+        else{
+            if self.mathExpressionLBL.text == "0"{
+                self.mathExpressionLBL.text! = buttonText
+            }else {
+                self.mathExpressionLBL.text! += buttonText
+            }
+        }
+        
+//
+//        if buttonText == "x" || buttonText == "÷"{
+//            let value = self.evaluate(exp: self.mathExpressionLBL.text!)
+//           // let value = self.eva(exp: expression + "+0")
+//            self.mathExpressionLBL.text = self.isInteger(value: value) ? "\(Int(value))" : "\(value)"
+//            self.mathExpressionLBL.text! += buttonText == "x" ? "x" : "÷"
+//    }
+//        else{
+//            if self.mathExpressionLBL.text == "0"{
+//                self.mathExpressionLBL.text! = buttonText
+//            }else {
+//                self.mathExpressionLBL.text! += buttonText
+//            }
+//        }
         
         
-        
-        
-        
+    }
     
-        
+    private func evaluate(exp: String) -> Double {
+        do{
+            let expression = try MathExpression(exp)
+            return expression.evaluate()
+        }catch{
+            print("Invalid expression")
+        }
+        return 0.0
+    }
+    
+    private func isInteger(value : Double) -> Bool {
+        value.truncatingRemainder(dividingBy: 1.0).isZero
+    }
+  
         
     @IBAction func factorial(_ sender: UIButton) {
         if let currentText = mathExpressionLBL.text, let currentNumber = Double(currentText){
@@ -96,14 +140,31 @@ class ViewController: UIViewController {
         
     
     @IBAction func result(_ sender: UIButton) {
-        let expressionEvaluator = NSExpression(format: currentexpression)
-        if let result = expressionEvaluator.expressionValue(with: nil, context: nil) as? Double {
-            mathExpressionLBL.text = "\(result)"
-            
+//        let expressionEvaluator = NSExpression(format: currentexpression)
+//        if let result = expressionEvaluator.expressionValue(with: nil, context: nil) as? Double {
+//            mathExpressionLBL.text = "\(result)"
+//
+//        }
+//        else{
+//            mathExpressionLBL.text = "Error"
+//        }
+        
+        
+    //------
+        
+        guard let buttonTitle = sender.titleLabel, let buttonText = buttonTitle.text else{
+            return
         }
-        else{
-            mathExpressionLBL.text = "Error"
+        guard let expression = self.mathExpressionLBL.text else {
+            return
         }
+        if buttonText == "="{
+           // let value = self.evaluate(exp: "\(expression + "0")")
+            let value = self.evaluate(exp: expression + "+0")
+            self.mathExpressionLBL.text = self.isInteger(value: value) ? "\(Int(value))" : "\(value)"
+            return
+        }
+  
         
     }
     
@@ -203,16 +264,6 @@ class ViewController: UIViewController {
     
     }
 
-//    private func evaluate(exp: String) -> Double {
-//        do{
-//            let expression = try MathExpression(exp)
-//            return expression.evaluate()
-//        }
-//        catch{
-//            print("Invalid expression")
-//        }
-//
-//    }
     
 
 
